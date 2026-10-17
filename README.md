@@ -26,7 +26,7 @@ Projeto de RAG (Retrieval-Augmented Generation) aplicado a e-commerce para anál
 
 ---
 
-##  Como Começar
+##  Como Iniciar:
 
 ### 1. Clonar o repositório
 ```bash
