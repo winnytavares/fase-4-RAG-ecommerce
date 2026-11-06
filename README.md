@@ -197,13 +197,11 @@ O notebook executa a validação prática dos 4 cenários estratégicos exigidos
 
 ## 🎥 8. Vídeo de Apresentação (Até 7 Minutos)
 
-O vídeo demonstrando o raciocínio técnico, arquitetura, recuperação e testes práticos está disponível em:
-- **Link do Vídeo:** [Adicionar Link do Vídeo no YouTube / Google Drive]
-- **Roteiro Utilizado:** Consulte o arquivo [video_script.md](video_script.md) para a transcrição minuto a minuto.
+O vídeo está disponível em: [Adicionar Link do Vídeo no YouTube / Google Drive]
 
 ---
 
 ## 👥 9. Equipe do Projeto
-- **Integrantes:** [Nomes dos Integrantes do Grupo]
+- **Integrantes:** A
 - **Curso:** Pós-Tech / Tech Challenge - Fase 4
 - **Ano:** 2026
