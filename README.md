@@ -227,8 +227,8 @@ O vídeo está disponível em:
 ---
 
 ## 👥 9. Equipe do Projeto
-- **Ana Beatriz Porto Pereira** — RM 372544
+- **Ana Beatriz Porto** — RM 372544
 - **Jade Ferreira** — RM 373208
-- **Felipe Nadal de Oliveira** — RM 372547
+- **Felipe Nadal** — RM 372547
 - **Winny Tavares** — RM 371471
 - **Curso:** Pós-Tech AI / Tech Challenge - Fase 4 - 2026
