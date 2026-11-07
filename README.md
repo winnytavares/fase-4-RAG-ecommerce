@@ -232,5 +232,5 @@ O vídeo demonstrando o raciocínio técnico, arquitetura, recuperação e teste
 - **Jade Ferreira** — RM 373208
 - **Felipe Nadal de Oliveira** — RM 372547
 - **Winny Tavares** — RM 371471
-- **Curso:** Pós-Tech Data & AI / Tech Challenge - Fase 4
+- **Curso:** Pós-Tech AI / Tech Challenge - Fase 4
 - **Ano:** 2026
