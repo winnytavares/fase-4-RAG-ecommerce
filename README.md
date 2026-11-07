@@ -5,7 +5,7 @@
 [![Databricks](https://img.shields.io/badge/Platform-Databricks%20Lakehouse-orange.svg)](https://databricks.com/)
 [![Delta Lake](https://img.shields.io/badge/Storage-Delta%20Lake-00ADD8.svg)](https://delta.io/)
 [![HuggingFace](https://img.shields.io/badge/Embeddings-Sentence--Transformers-yellow.svg)](https://huggingface.co/)
-[![Google Gemini](https://img.shields.io/badge/LLM-Gemini%202.5%20Flash-4285F4.svg)](https://ai.google.dev/)
+[![Google Gemini](https://img.shields.io/badge/LLM-Gemini%203.8%20Flash-4285F4.svg)](https://ai.google.dev/)
 [![Meta Llama](https://img.shields.io/badge/LLM-Llama%203.1%2070B-0467DF.svg)](https://www.databricks.com/)
 
 > **Solução corporativa de Voice of Customer (VoC) para análise e exploração de mais de 40 mil avaliações de e-commerce utilizando Retrieval-Augmented Generation (RAG), embeddings multilíngues, enriquecimento relacional com metadados e prevenção estrita de alucinações.**
@@ -73,7 +73,7 @@ O fluxo da solução foi desenhado com foco em modularidade, velocidade de infer
 │                ENGENHARIA DE PROMPT & GERAÇÃO MULTI-LLM                │
 │ • Diretrizes rígidas de Grounding e Persona Especialista em CX         │
 │ • Citação obrigatória de fontes [1], [2] com Nota, UF e Categoria      │
-│ • Provedores: Google Gemini 2.5 Flash / Databricks Llama 3.1 70B       │
+│ • Provedores: Google Gemini 3.8 Flash / Databricks Llama 3.1 70B       │
 │ • Resposta executiva, auditável e fundamentada nos dados reais         │
 └────────────────────────────────────────────────────────────────────────┘
 ```
@@ -90,7 +90,7 @@ O fluxo da solução foi desenhado com foco em modularidade, velocidade de infer
 | **Análise Exploratória (EDA)** | Matplotlib & Seaborn | Visualização gráfica de distribuição de notas, volumetria e correlações de negócio |
 | **Modelo de Embeddings** | `paraphrase-multilingual-MiniLM-L12-v2` | Suporte robusto a mais de 50 idiomas incluindo português coloquial, 384 dimensões e alta velocidade |
 | **Framework de Embeddings**| `sentence-transformers` | Vetorização semântica em lote (*batch encoding*) com aceleração por GPU/CPU |
-| **Modelo Generativo Principal** | Google Gemini (`gemini-2.5-flash`) | Alta janela de contexto, rapidez de resposta e excelente capacidade de seguir instruções de *grounding* |
+| **Modelo Generativo Principal** | Google Gemini (`gemini-3.8-flash`) | Alta janela de contexto, rapidez de resposta e excelente capacidade de seguir instruções de *grounding* |
 | **Modelo Generativo Alternativo**| Databricks Meta Llama 3.1 70B | Suporte corporativo local via Databricks Foundation Model API / MLflow Deployments |
 
 ---
@@ -145,7 +145,7 @@ O notebook executa a validação prática dos 4 cenários estratégicos exigidos
 ### Opção A: Execução no Databricks (Ambiente Oficial)
 1. Acesse seu workspace Databricks.
 2. Na barra lateral, acesse **Workspace** -> navegue até sua pasta pessoal -> clique em **Import** (Importar).
-3. Selecione o arquivo `notebook_rag_olist_voice_of_customer.ipynb` localizado neste repositório.
+3. Selecione o arquivo `notebooks/voice_of_customer.ipynb` localizado neste repositório.
 4. Certifique-se de que os dados da Olist estejam no caminho `/Volumes/workspace/default/fase4-ecommerce`.
 5. Anexe o notebook ao cluster e configure sua chave do Gemini como variável de ambiente ou via Secrets:
    ```python
@@ -184,24 +184,53 @@ O notebook executa a validação prática dos 4 cenários estratégicos exigidos
 
 ## 📁 7. Estrutura do Repositório
 
-```
-├── notebook_rag_olist_voice_of_customer.ipynb  # Notebook principal (39 células modulares, EDA, Delta Lake e RAG)
-├── README.md                                   # Documentação técnica e executiva do projeto
-├── requirements.txt                            # Lista de dependências Python
-├── video_script.md                             # Roteiro cronometrado (7 minutos) para apresentação em vídeo
-└── docs/
-    └── arquitetura_rag.png                     # Diagrama de arquitetura da solução
+```text
+├── data/
+│   ├── .gitkeep
+│   └── README.md                                    # Informações e links para download da base Olist
+├── docs/
+│   ├── .gitkeep
+│   └── README.md                                    # Documentação de apoio e arquitetura
+├── notebooks/
+│   ├── .gitkeep
+│   ├── README.md
+│   └── voice_of_customer.ipynb                     # Notebook principal executado com EDA, Delta Lake e RAG
+├── src/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   └── main.py                                  # Orquestração do pipeline RAG
+│   ├── generation/
+│   │   ├── __init__.py
+│   │   └── llm.py                                   # Prompt engineering e conectores LLM (Gemini e Llama)
+│   ├── indexing/
+│   │   ├── __init__.py
+│   │   └── embeddings.py                            # Carregamento do Sentence-Transformers e vetorização
+│   ├── ingestion/
+│   │   ├── __init__.py
+│   │   └── load_data.py                             # Tratamento, enriquecimento e cálculo de atrasos
+│   ├── retrieval/
+│   │   ├── __init__.py
+│   │   └── search.py                                # Busca semântica por cosseno e threshold anti-alucinação
+│   └── __init__.py
+├── .env.example                                     # Modelo para configuração das variáveis de ambiente
+├── .gitignore                                       # Filtro de segurança contra tokens e arquivos temporários
+├── README.md                                        # Documentação executiva completa da solução
+└── requirements.txt                                 # Lista de dependências Python para reprodução
 ```
 
 ---
 
 ## 🎥 8. Vídeo de Apresentação (Até 7 Minutos)
 
-O vídeo está disponível em: [Adicionar Link do Vídeo no YouTube / Google Drive]
+O vídeo demonstrando o raciocínio técnico, arquitetura, recuperação e testes práticos está disponível em:
+- **Link do Vídeo:** [Cole aqui o link do YouTube / Google Drive após a gravação]
 
 ---
 
 ## 👥 9. Equipe do Projeto
-- **Integrantes:** A
-- **Curso:** Pós-Tech / Tech Challenge - Fase 4
+- **Ana Beatriz Porto Pereira** — RM 372544
+- **Jade Ferreira** — RM 373208
+- **Felipe Nadal de Oliveira** — RM 372547
+- **Winny Tavares** — RM 371471
+- **Curso:** Pós-Tech Data & AI / Tech Challenge - Fase 4
 - **Ano:** 2026

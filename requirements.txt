@@ -1,19 +1,8 @@
-# Core & LLM Frameworks
-langchain>=0.2.0
-langchain-community>=0.2.0
-langchain-openai>=0.1.0
-
-# Vector Database
-chromadb>=0.5.0
-
-# Data Processing
+sentence-transformers>=3.0.0
+google-genai>=0.1.0
 pandas>=2.0.0
 numpy>=1.24.0
-
-# Interface
-streamlit>=1.35.0
-
-# Utilities
-python-dotenv>=1.0.0
-pydantic>=2.0.0
-tqdm>=4.66.0
+torch>=2.0.0
+pyspark>=3.4.0
+delta-spark>=3.0.0
+tqdm>=4.65.0

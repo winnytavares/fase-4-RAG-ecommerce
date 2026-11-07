@@ -1,50 +1,14 @@
-# Environment Variables
+# Ambientes virtuais e pacotes
 .env
-.env.local
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Virtual Environments
 venv/
-.venv/
-ENV/
 env/
+__pycache__/
+*.pyc
 
-# Jupyter Notebooks Checkpoints
-.ipynb_checkpoints
-*/.ipynb_checkpoints/*
+# Checkpoints do Jupyter e Databricks
+.ipynb_checkpoints/
+*.checkpoint
 
-# Data (não versionar datasets brutos)
-data/*
-!data/README.md
-!data/.gitkeep
-
-# Vector store data
-chroma_db/
-vector_store/
-
-# IDE & OS
-.vscode/
-.idea/
+# Arquivos temporários de sistema
 .DS_Store
 Thumbs.db
