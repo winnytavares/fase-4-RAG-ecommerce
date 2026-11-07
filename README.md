@@ -220,10 +220,9 @@ O notebook executa a validação prática dos 4 cenários estratégicos exigidos
 
 ---
 
-## 🎥 8. Vídeo de Apresentação (Até 7 Minutos)
+## 🎥 8. Vídeo de Apresentação
 
-O vídeo demonstrando o raciocínio técnico, arquitetura, recuperação e testes práticos está disponível em:
-- **Link do Vídeo:** [Cole aqui o link do YouTube / Google Drive após a gravação]
+O vídeo está disponível em:
 
 ---
 
@@ -232,5 +231,4 @@ O vídeo demonstrando o raciocínio técnico, arquitetura, recuperação e teste
 - **Jade Ferreira** — RM 373208
 - **Felipe Nadal de Oliveira** — RM 372547
 - **Winny Tavares** — RM 371471
-- **Curso:** Pós-Tech Data & AI / Tech Challenge - Fase 4
-- **Ano:** 2026
+- **Curso:** Pós-Tech AI / Tech Challenge - Fase 4 - 2026
