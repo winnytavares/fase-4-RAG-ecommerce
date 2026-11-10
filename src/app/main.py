@@ -1,6 +1,7 @@
 """
-Ponto de entrada (CLI) para execução do Pipeline Voice of Customer RAG.
-Permite executar buscas semânticas na amostra do Delta Lake e gerar respostas fundamentadas.
+Orquestrador principal (CLI) do Pipeline Voice of Customer RAG.
+Executa busca semântica sobre os dados do Delta Lake, aplica o Guardrail
+Anti-Alucinação e gera sínteses fundamentadas com citações.
 """
 import argparse
 import sys
@@ -8,24 +9,22 @@ from pathlib import Path
 import pandas as pd
 from dotenv import load_dotenv
 
-# Carrega variáveis de ambiente
 load_dotenv()
 
-# Ajusta path para importação dos módulos internos
-ROOT_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 sys.path.append(str(ROOT_DIR))
 
 from src.retrieval.guardrail import validar_seguranca_guardrail
-from src.retrieval.retriever import DeltaVoCRetriever
-from src.indexing.embedder import ReviewEmbedder
-from src.generation.generator import VoCAnswerGenerator
+from src.retrieval.search import DeltaVoCRetriever
+from src.indexing.embeddings import ReviewEmbedder
+from src.generation.llm import VoCAnswerGenerator
 
 
 def carregar_dados_amostra() -> pd.DataFrame:
     """Carrega o dataset exportado da tabela Delta Lake."""
     csv_path = ROOT_DIR / "data" / "sample_reviews_rag.csv"
     if not csv_path.exists():
-        raise FileNotFoundError(f"Arquivo não encontrado em: {csv_path}")
+        raise FileNotFoundError(f"Arquivo de dados não encontrado em: {csv_path}")
     return pd.read_csv(csv_path)
 
 
@@ -40,22 +39,16 @@ def executar_pipeline(
     print(f"🔍 Pergunta: {pergunta}")
     print("=" * 80)
 
-    # 1. Carrega dados
     df_reviews = carregar_dados_amostra()
     print(f"✓ Base carregada: {len(df_reviews)} avaliações reais do Delta Lake.")
 
-    # 2. Inicializa Embedder e vetoriza a pergunta
-    print("✓ Codificando pergunta com paraphrase-multilingual-MiniLM-L12-v2...")
+    print("✓ Vetorizando pergunta e documentos com paraphrase-multilingual-MiniLM-L12-v2...")
     embedder = ReviewEmbedder()
     query_vec = embedder.encode_query(pergunta)
-
-    # 3. Vetoriza base (ou usa cache)
-    print("✓ Indexando embeddings dos documentos...")
     doc_embeddings = embedder.encode_documents(
         df_reviews["documento_rag"].tolist(), show_progress=False
     )
 
-    # 4. Recuperação Semântica
     retriever = DeltaVoCRetriever(df_reviews, doc_embeddings)
     evidencias = retriever.buscar(
         query_embedding=query_vec,
@@ -67,7 +60,7 @@ def executar_pipeline(
 
     sim_max = evidencias[0]["similaridade"] if evidencias else 0.0
 
-    # 5. Validação com Guardrail Anti-Alucinação ("Cuidado com alucinações")
+    # Validação de Segurança: "Cuidado com alucinações"
     aprovado, motivo_bloqueio = validar_seguranca_guardrail(
         pergunta=pergunta, similaridade_maxima=sim_max
     )
@@ -77,12 +70,11 @@ def executar_pipeline(
         return
 
     print(f"✓ Guardrail aprovado: cos(θ)={sim_max:.3f} >= 0.30")
-    print(f"✓ Recuperadas {len(evidencias)} avaliações relevantes:")
+    print(f"✓ Top-{len(evidencias)} evidências recuperadas:")
     for idx, e in enumerate(evidencias, start=1):
         print(f"   [{idx}] (cos(θ)={e['similaridade']:.3f} | {e['review_score']}★ | {e['categoria']}): {e['documento_rag'][:100]}...")
 
-    # 6. Geração Grounded via Gemini / LLM
-    print("\n✓ Gerando síntese analítica fundamentada...")
+    print("\n✓ Gerando resposta analítica fundamentada...")
     generator = VoCAnswerGenerator()
     resposta = generator.gerar_resposta(pergunta, evidencias)
 

@@ -1,50 +1,30 @@
-# Environment Variables
+# Ambientes virtuais e pacotes
 .env
 .env.local
-
-# Python
+venv/
+.venv/
+env/
+ENV/
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# Virtual Environments
-venv/
-.venv/
-ENV/
-env/
-
-# Jupyter Notebooks Checkpoints
-.ipynb_checkpoints
+# Checkpoints do Jupyter e Databricks
+.ipynb_checkpoints/
 */.ipynb_checkpoints/*
+*.checkpoint
 
-# Data (não versionar datasets brutos grandes)
+# Data (não versionar datasets brutos grandes, apenas amostra do Delta Lake)
 data/*
 !data/README.md
 !data/.gitkeep
 !data/sample_reviews_rag.csv
 
-# Vector store data
+# Vector stores locais
 chroma_db/
 vector_store/
 
-# IDE & OS
+# Arquivos temporários e IDE
 .vscode/
 .idea/
 .DS_Store

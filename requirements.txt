@@ -1,21 +1,19 @@
 # Embeddings & Vetorização Semântica
 sentence-transformers>=3.0.0
-torch>=2.2.0
+torch>=2.0.0
 
 # LLM & Geração Grounded
-google-generativeai>=0.8.0
+google-genai>=0.1.0
 
 # Processamento de Dados & Métricas
-pandas>=2.1.0
-numpy>=1.26.0
+pandas>=2.0.0
+numpy>=1.24.0
 scikit-learn>=1.4.0
-pyarrow>=15.0.0
 
 # Persistência Transacional (Delta Lake & Spark)
-pyspark>=3.5.0
-delta-spark>=3.2.0
+pyspark>=3.4.0
+delta-spark>=3.0.0
 
 # Utilitários & Ambiente
 python-dotenv>=1.0.0
-pydantic>=2.7.0
-tqdm>=4.66.0
+tqdm>=4.65.0
