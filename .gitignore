@@ -34,10 +34,11 @@ env/
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 
-# Data (não versionar datasets brutos)
+# Data (não versionar datasets brutos grandes)
 data/*
 !data/README.md
 !data/.gitkeep
+!data/sample_reviews_rag.csv
 
 # Vector store data
 chroma_db/
