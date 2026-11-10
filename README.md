@@ -231,4 +231,4 @@ O vídeo está disponível em:
 - **Jade Ferreira** — RM 373208
 - **Felipe Nadal** — RM 372547
 - **Winny Tavares** — RM 371471
-- **Curso:** Pós-Tech AI / Tech Challenge - Fase 4 - 2026
+- **Curso:** Pós-Tech AI / Tech Challenge - Fase 4
