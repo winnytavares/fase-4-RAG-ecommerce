@@ -203,7 +203,7 @@ O vídeo está disponível em:
 
 ---
 
-## 👥 9. Equipe do Projeto
+## 👥 9. Equipe do Projeto:
 - **Ana Beatriz Porto** — RM 372544
 - **Jade Ferreira** — RM 373208
 - **Felipe Nadal** — RM 372547
