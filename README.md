@@ -12,6 +12,15 @@
 
 ---
 
+## 🌐 Acessar & Rodar a Interface Interativa Online (1 Clique)
+
+Não é necessário instalar nada para testar a solução! Disponibilizamos a aplicação web interativa completa na pasta **[`demo/`](./demo/)** já conectada com **1.200 avaliações reais** do Delta Lake (`workspace.default.reviews_rag`):
+
+* 🚀 **Executar Online no Navegador:** [**Abrir Interface Web VoC RAG (`voc_agent_ui.html`)**](https://raw.githack.com/winnytavares/fase-4-RAG-ecommerce/main/demo/voc_agent_ui.html)
+* 📂 **Acessar o arquivo HTML no repositório:** [`demo/voc_agent_ui.html`](./demo/voc_agent_ui.html) *(ou [`demo/README.md`](./demo/README.md) para instruções de execução)*
+
+---
+
 ## 📌 1. Visão Geral e Problema de Negócio
 
 No setor de comércio eletrônico, compreender a experiência do consumidor (**Voice of Customer - VoC**) é um pilar estratégico indispensável para retenção de clientes, redução de cancelamentos e aprimoramento de produtos.
@@ -110,10 +119,12 @@ Veja a transcrição completa dos resultados em **[`docs/casos_de_teste_rag.md`]
 
 ### Opção A: Interface Web Interativa (Pronta para Teste Instantâneo)
 Incluímos uma aplicação web interativa (*VoC Agent UI*) pré-carregada com **1.200 avaliações reais** exportadas do Delta Lake (`workspace.default.reviews_rag`):
+* **Online em 1 clique:** [Abrir Interface Web VoC RAG](https://raw.githack.com/winnytavares/fase-4-RAG-ecommerce/main/demo/voc_agent_ui.html)
+* **Localmente via servidor Python:**
 ```bash
 python src/app/run_app.py
 ```
-*(Acesse `http://localhost:8501/voc_agent_ui.html` ou abra diretamente o arquivo [`src/app/voc_agent_ui.html`](./src/app/voc_agent_ui.html) no seu navegador).*
+*(Ou baixe e dê um duplo clique em [`demo/voc_agent_ui.html`](./demo/voc_agent_ui.html)).*
 
 ### Opção B: Execução Local via Pipeline Python (CLI)
 1. Clone o repositório e instale as dependências:
@@ -144,12 +155,16 @@ python src/app/run_app.py
 │   ├── .gitkeep
 │   ├── README.md                        # Dicionário de dados e instruções do dataset Olist
 │   └── sample_reviews_rag.csv           # Amostra real de 1.200 avaliações exportadas do Delta Lake
+├── demo/
+│   ├── README.md                        # Instruções de acesso e link online 1-clique
+│   └── voc_agent_ui.html                # Interface Web Interativa standalone (pronta para rodar)
 ├── docs/
 │   ├── .gitkeep
 │   ├── README.md                        # Índice da documentação técnica
 │   ├── arquitetura.md                   # Arquitetura, fluxo Mermaid e justificativas técnicas
 │   ├── tratamento_dados.md              # Diagnóstico detalhado da limpeza e enriquecimento
-│   └── casos_de_teste_rag.md            # Exemplos reais de perguntas, evidências e recusas
+│   ├── casos_de_teste_rag.md            # Exemplos reais de perguntas, evidências e recusas
+│   └── index.html                       # Ponto de entrada compatível com GitHub Pages (/docs)
 ├── notebooks/
 │   ├── .gitkeep
 │   ├── README.md                        # Guia de execução do notebook no Databricks
